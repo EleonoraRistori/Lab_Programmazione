@@ -41,4 +41,6 @@ void FileLoader::handleFile(const char* fileName) {
 }
 
 
-
+int FileLoader::getNumFiles() const {
+    return numFiles;
+}
