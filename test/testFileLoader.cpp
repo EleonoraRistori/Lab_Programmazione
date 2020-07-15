@@ -15,8 +15,19 @@ TEST(fileLoaderTest, testListOfFiles){
 }
 
 TEST(fileLoaderTest, testEmptyListOfFiles){
-    FileLoader* loader;
+    FileLoader loader;
     std::list<const char*> files;
-    ASSERT_THROW(loader->loadFiles(files), std::runtime_error);
+    ASSERT_THROW(loader.loadFiles(files), std::runtime_error);
 }
 
+TEST(fileLoaderTest, testLoading){
+    FileLoader loader;
+    loader.handleFile("Text.txt");
+    ASSERT_EQ(loader.isLoaded1(), true);
+}
+
+TEST(fileLoaderTest, testFailedLoading){
+    FileLoader loader;
+    loader.handleFile("Text3.txt");
+    ASSERT_EQ(loader.isLoaded1(), false);
+}
