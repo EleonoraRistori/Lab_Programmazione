@@ -60,7 +60,7 @@ void View::update() {
         progressBar->setValue(progressBar->value() + ((1.0 / subject->getNumFiles()) * 100));
         label->setGeometry(QRect(QPoint(325, 230), QSize(150, 100)));
         label->setStyleSheet("QLabel { background-color : green; color : white; }");
-        label->setText(label->text() + "\nFile loaded");
+        label->setText(label->text() + "\nFile " + subject->getFileName() + " loaded");
     } else
-        errorMessage -> showMessage("Cannot load file");
+        errorMessage -> showMessage("Cannot load file" + subject->getFileName());
 }

@@ -7,6 +7,7 @@
 
 #include <list>
 #include <iostream>
+#include <QString>
 #include "Subject.h"
 #include "File.h"
 
@@ -18,7 +19,7 @@ public:
     void handleFile(const char* fileName);
 
     bool isLoaded1() const;
-
+    const QString &getFileName() const;
 
     int getNumFiles() const;
 
@@ -32,7 +33,7 @@ private:
     std::list<Observer*> observers;
     int numFiles;
     bool isLoaded;
-
+    QString fileName;
 };
 
 

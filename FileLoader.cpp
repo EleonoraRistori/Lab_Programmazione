@@ -31,6 +31,7 @@ void FileLoader::loadFiles(std::list<const char*> &fileNames) {
 }
 
 void FileLoader::handleFile(const char* fileName) {
+    this->fileName = QString(fileName);
     try {
         File file(fileName);
         isLoaded = true;
@@ -50,4 +51,9 @@ int FileLoader::getNumFiles() const {
 bool FileLoader::isLoaded1() const {
     return isLoaded;
 }
+
+const QString &FileLoader::getFileName() const {
+    return fileName;
+}
+
 
