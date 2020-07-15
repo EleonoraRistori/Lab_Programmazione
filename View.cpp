@@ -28,6 +28,12 @@ View::View(FileLoader *s) : subject(s) {
 
     errorMessage = new QErrorMessage(this);
 
+    //set the description of the program
+    description = new QLabel(" Program that loads resources",this);
+    description->setGeometry(QRect(QPoint(250,90),QSize(300,30)));
+    description->setStyleSheet("QLabel { border-radius : 5px; background-color : #369CDD; color : white; }");
+    description->setAlignment(Qt::AlignCenter);
+
     connect(button, SIGNAL(released()), this, SLOT(startLoadingFiles()));
 
 }
@@ -37,9 +43,13 @@ void View::startLoadingFiles() {
     files.push_back("Text.txt");
     files.push_back("Text2.txt");
     files.push_back("Image.svg");
-    subject->loadFiles(files);
-    if(progressBar->value() == 99)
-        progressBar->setValue(100);
+    try {
+        subject->loadFiles(files);
+        if (progressBar->value() == 99)
+            progressBar->setValue(100);
+    } catch(std::runtime_error& e){
+        std::cout << e.what() << std::endl;
+    }
 
 }
 
@@ -58,9 +68,9 @@ void View::detach() {
 void View::update() {
     if(subject->isLoaded1()) {
         progressBar->setValue(progressBar->value() + ((1.0 / subject->getNumFiles()) * 100));
-        label->setGeometry(QRect(QPoint(325, 230), QSize(150, 100)));
-        label->setStyleSheet("QLabel { background-color : green; color : white; }");
-        label->setText(label->text() + "\nFile " + subject->getFileName() + " loaded");
+        label->setGeometry(QRect(QPoint(310, 230), QSize(180, subject->getNumFiles()*30)));
+        label->setStyleSheet("QLabel { border-radius : 5px; background-color : green; color : white; }");
+        label->setText(label->text() + "File " + subject->getFileName() + " loaded\n");
     } else
         errorMessage -> showMessage("Cannot load file " + subject->getFileName());
 }
