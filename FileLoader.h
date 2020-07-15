@@ -17,6 +17,9 @@ public:
     void loadFiles(std::list<const char*>& fileNames);
     void handleFile(const char* fileName);
 
+    bool isLoaded1() const;
+
+
     int getNumFiles() const;
 
     void addObserver(Observer *o) override;
@@ -28,6 +31,7 @@ public:
 private:
     std::list<Observer*> observers;
     int numFiles;
+    bool isLoaded;
 
 };
 

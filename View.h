@@ -11,6 +11,7 @@
 #include <QProgressBar>
 #include <QString>
 #include <QLabel>
+#include <QErrorMessage>
 #include "Observer.h"
 #include "FileLoader.h"
 
@@ -33,6 +34,7 @@ private:
     QPushButton* button;
     QProgressBar* progressBar;
     QLabel* label;
+    QErrorMessage* errorMessage;
 
 };
 

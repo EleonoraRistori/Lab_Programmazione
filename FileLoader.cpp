@@ -33,9 +33,11 @@ void FileLoader::loadFiles(std::list<const char*> &fileNames) {
 void FileLoader::handleFile(const char* fileName) {
     try {
         File file(fileName);
+        isLoaded = true;
         notify();
     } catch (std::runtime_error& e){
         std::cerr << e.what() << std::endl;
+        isLoaded = false;
         notify();
     }
 }
@@ -44,3 +46,8 @@ void FileLoader::handleFile(const char* fileName) {
 int FileLoader::getNumFiles() const {
     return numFiles;
 }
+
+bool FileLoader::isLoaded1() const {
+    return isLoaded;
+}
+
