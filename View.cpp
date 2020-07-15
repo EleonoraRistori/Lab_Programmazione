@@ -62,5 +62,5 @@ void View::update() {
         label->setStyleSheet("QLabel { background-color : green; color : white; }");
         label->setText(label->text() + "\nFile " + subject->getFileName() + " loaded");
     } else
-        errorMessage -> showMessage("Cannot load file" + subject->getFileName());
+        errorMessage -> showMessage("Cannot load file " + subject->getFileName());
 }
