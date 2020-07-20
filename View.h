@@ -13,6 +13,7 @@
 #include <QLabel>
 #include <QErrorMessage>
 #include <QFrame>
+#include <cmath>
 #include "Observer.h"
 #include "FileLoader.h"
 

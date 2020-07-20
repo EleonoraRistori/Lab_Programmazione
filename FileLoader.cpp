@@ -17,14 +17,14 @@ void FileLoader::notify() {
         observer->update();
 }
 
-void FileLoader::loadFiles(std::list<const char*> &fileNames) {
+void FileLoader::loadFiles(std::list<std::string> &fileNames) {
     numFiles = fileNames.size();
     if (numFiles == 0){
         throw std::runtime_error("No files found");
     }
     else {
         for (auto fileName : fileNames)
-            handleFile(fileName);
+            handleFile(fileName.c_str());
     }
 
 

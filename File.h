@@ -7,6 +7,8 @@
 
 #include <string>
 #include <stdexcept>
+#include <chrono>
+#include <thread>
 
 class File {
     public:

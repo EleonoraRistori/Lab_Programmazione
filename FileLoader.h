@@ -15,7 +15,7 @@ class FileLoader : public Subject {
 public:
     FileLoader() : numFiles(0) {}
 
-    void loadFiles(std::list<const char*>& fileNames);
+    void loadFiles(std::list<std::string>& fileNames);
     void handleFile(const char* fileName);
 
     bool isLoaded1() const;

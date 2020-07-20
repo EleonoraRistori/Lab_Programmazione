@@ -3,20 +3,21 @@
 //
 
 #include "../FileLoader.h"
+#include "../test/testObserver.h"
 #include "gtest/gtest.h"
 
 TEST(fileLoaderTest, testListOfFiles){
     FileLoader loader;
-    std::list<const char*> files;
-    files.push_back("Text.txt");
-    files.push_back("Text2.txt");
-    files.push_back("Image.svg");
+    std::list<std::string> files;
+    files.emplace_back("Text.txt");
+    files.emplace_back("Text2.txt");
+    files.emplace_back("Image.svg");
     ASSERT_NO_THROW(loader.loadFiles(files));
 }
 
 TEST(fileLoaderTest, testEmptyListOfFiles){
     FileLoader loader;
-    std::list<const char*> files;
+    std::list<std::string> files;
     ASSERT_THROW(loader.loadFiles(files), std::runtime_error);
 }
 
@@ -30,4 +31,10 @@ TEST(fileLoaderTest, testFailedLoading){
     FileLoader loader;
     loader.handleFile("Text3.txt");
     ASSERT_EQ(loader.isLoaded1(), false);
+}
+
+TEST(fileLoaderTest, testUpdate){
+    FileLoader loader;
+    testObserver observer(&loader);
+    ASSERT_NO_THROW(observer.startLoadingFiles());
 }
