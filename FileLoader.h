@@ -16,7 +16,7 @@ public:
     FileLoader() : numFiles(0) {}
 
     void loadFiles(std::list<std::string>& fileNames);
-    void handleFile(const char* fileName);
+    void handleFile(std::string fileName);
 
     bool isLoaded1() const;
     const QString &getFileName() const;

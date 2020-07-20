@@ -24,16 +24,16 @@ void FileLoader::loadFiles(std::list<std::string> &fileNames) {
     }
     else {
         for (auto fileName : fileNames)
-            handleFile(fileName.c_str());
+            handleFile(fileName);
     }
 
 
 }
 
-void FileLoader::handleFile(const char* fileName) {
-    this->fileName = QString(fileName);
+void FileLoader::handleFile(std::string fileName) {
+    this->fileName = QString::fromStdString(fileName);;
     try {
-        File file(fileName);
+        File file(fileName.c_str());
         isLoaded = true;
         notify();
     } catch (std::runtime_error& e){
